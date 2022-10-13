@@ -10,28 +10,28 @@
 # 🧑🏻‍💻 I'm checking the difference of line and column with a 1..9 array if no difference it's working
 # Then I'm creating an array for each 3x3 subgrid and compare it again with 1..9 array
 
-
 def validSolution(board)
   line = (1..9).to_a
   board.each do |e|
-    return false if (line-e) != []
+    return false if (line - e) != []
   end
 
   boardy = []
   line.each do |i|
-    boardy.push(board.map {|row| row[i-1]})
+    boardy.push(board.map { |row| row[i - 1] })
   end
 
   boardy.each do |e|
-    return false if (line-e) != []
+    return false if (line - e) != []
   end
 
   line.each do |l|
-    if [0,3,6].include?(l-1)
+    if [0,3,6].include?(l - 1)
       3.times do
         i = 0
-        subgrid = board[l-1][i, 3] + board[l-1 + 1][i, 3] + board[l-1 + 2][i, 3]
+        subgrid = board[l - 1][i, 3] + board[l - 1 + 1][i, 3] + board[l - 1 + 2][i, 3]
         return false if (line - subgrid) != []
+
         i += 3
       end
     end
