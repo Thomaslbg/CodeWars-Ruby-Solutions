@@ -13,10 +13,9 @@
 # 🧑🏻‍💻 regex was found here : https://stackoverflow.com/questions/31910955/regex-to-match-words-with-hyphens-and-or-apostrophes
 # 🧑🏻‍💻 group by / transfor found here : https://stackoverflow.com/questions/5470725/how-to-group-by-count-in-array-without-using-loop
 
-
 def top_3_words(text)
   result = []
   words = text.downcase.scan(/(?:\w|['-]\w)+/).group_by(&:itself).transform_values(&:size)
-  words.sort_by {|key, value| value}.reverse.first(3).each{ |w|  result.push(w[0]) }
+  words.sort_by {|_, value| value}.reverse.first(3).each{ |w|  result.push(w[0]) }
   result
 end
